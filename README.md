@@ -65,3 +65,40 @@ set fog_start, 0.4
 # Rendering
 ray
 png output_image.png
+
+2. Create a Batch Submission Script
+Next, create a batch submission script for your HPC scheduler (e.g., SLURM, PBS, or LSF). Here’s an example for SLURM:
+
+#!/bin/bash
+#SBATCH --job-name=pymol_render
+#SBATCH --output=pymol_render.out
+#SBATCH --error=pymol_render.err
+#SBATCH --time=01:00:00
+#SBATCH --partition=standard
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=32G
+
+# Load PyMOL module if available
+module load pymol
+
+# Run PyMOL in headless mode
+pymol -cq render_script.pml
+
+3. Submit the Job to the HPC Cluster
+Submit the job to the HPC scheduler using the appropriate command. For SLURM, use:
+
+bash
+Copy code
+sbatch pymol_hpc_job.sh
+
+**Additional Tips**
+Resource Allocation: Adjust the --cpus-per-task and --mem parameters based on your job requirements and the available resources on your HPC cluster.
+Job Monitoring: Monitor the job status using commands like squeue (for SLURM) or qstat (for PBS).
+Output Files: Ensure that the output image file (e.g., output_image.png) is saved in a directory where you have write permissions.
+Example Workflow
+Prepare PyMOL Script: Save your PyMOL commands in render_script.pml.
+Create Batch Script: Save the SLURM batch script as pymol_hpc_job.sh.
+Submit Job: Submit the batch script using sbatch pymol_hpc_job.sh.
+Monitor Job: Check job status and output files once the job is complete.
