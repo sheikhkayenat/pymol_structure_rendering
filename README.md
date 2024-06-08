@@ -1,61 +1,95 @@
 # pymol_structure_rendering on HPC
 Transfer the pymol session file on the HPC directory through this code on local terminal:
 scp -r /path/to/pymol/session/file/ username@hpcloginid:/path/to/hpc/directory/
-# Login to HPC terminal and do this and prepare the PyMOL Script #Create the .pml script file
+
+#Login to HPC terminal and do this and prepare the PyMOL Script #Create the .pml script file
+
 touch render_script.pml
+
 vi render_script.pml
-# Edit.pml file with the following script
+
+#Edit.pml file with the following script
 # 1.1 general settings
 bg_color white
+
 set ray_trace_mode, 1
+
 set antialias, 2
+
 set ray_shadows, 1
+
 set ambient, 0.3
+
 set reflect, 1
+
 set shininess, 10
+
 set spec_reflect, 1
+
 set spec_power, 200
+
 set light_count, 8
 # 1.2 Image Resolution
 ray 3000, 3000
 # 1.3 Protein Representation
 hide everything
+
 show cartoon, all
+
 show sticks, organic
+
 set cartoon_fancy_helices, 1
+
 set cartoon_highlight_color, grey70
+
 set cartoon_side_chain_helper, on
 # 1.4 Surface Representation
 show surface, all
+
 set transparency, 0.2, all
 # 1.5 Colors by Secondary Structure and Chain
 color marine, ss h
+
 color yellow, ss s
+
 color salmon, ss l
+
 color cyan, chain A
+
 color magenta, chain B
 # 1.6 Highlight Ligands
 show sticks, organic
+
 color green, organic
 # 1.7 Highlight Important Residues
 select important_residues, resi 123+456
+
 show spheres, important_residues
+
 color red, important_residues
 # 1.8 Labeling Important Residues
 label resi 123 and name CA, "Important Residue"
+
 set label_font_id, 7
+
 set label_size, 14
+
 color black, labels
 # 1.9 Lighting and Shadows
 set spec_reflect, 1
+
 set spec_power, 200
+
 set shininess, 10
+
 set light_count, 8
 # 1.10 Depth Cueing
 set depth_cue, 1
+
 set fog_start, 0.4
 # 1.11 Rendering
 ray
+
 png output_image.png
 
 # 2. Create a Batch Submission Script
