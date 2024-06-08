@@ -7,7 +7,7 @@ scp -r /path/to/pymol/session/file/ username@hpcloginid:/path/to/hpc/directory/
 touch render_script.pml
 vi render_script.pml
 
-#Edit.pml file with the following script
+1. Edit.pml file with the following script
 # General Settings
 bg_color white
 set ray_trace_mode, 1
