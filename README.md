@@ -1,14 +1,11 @@
 # pymol_structure_rendering on HPC
 Transfer the pymol session file on the HPC directory through this code on local terminal:
-
 scp -r /path/to/pymol/session/file/ username@hpcloginid:/path/to/hpc/directory/
-
-#Login to HPC terminal and do this and prepare the PyMOL Script #Create the .pml script file
+# Login to HPC terminal and do this and prepare the PyMOL Script #Create the .pml script file
 touch render_script.pml
 vi render_script.pml
-
-1. Edit.pml file with the following script
-# 1.1 General Settings
+# Edit.pml file with the following script
+# 1.1 general settings
 bg_color white
 set ray_trace_mode, 1
 set antialias, 2
@@ -61,9 +58,9 @@ set fog_start, 0.4
 ray
 png output_image.png
 
-2. Create a Batch Submission Script
+# 2. Create a Batch Submission Script
 Next, create a batch submission script for your HPC scheduler (e.g., SLURM, PBS, or LSF). Here’s an example for SLURM:
-# 2.1
+# 2.1 
 #!/bin/bash
 #SBATCH --job-name=pymol_render
 
@@ -89,7 +86,7 @@ module load pymol
 # 2.3 Run PyMOL in headless mode
 pymol -cq render_script.pml
 
-3. Submit the Job to the HPC Cluster
+# 3. Submit the Job to the HPC Cluster
 Submit the job to the HPC scheduler using the appropriate command. For SLURM, use:
 
 sbatch pymol_hpc_job.sh
