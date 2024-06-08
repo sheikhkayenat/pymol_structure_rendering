@@ -1,11 +1,15 @@
 # pymol_structure_rendering on HPC
 Transfer the pymol session file on the HPC directory through this code on local terminal:
+
 scp -r /path/to/pymol/session/file/ username@hpcloginid:/path/to/hpc/directory/
+
 #Login to HPC terminal and do this:
 #Prepare Your PyMOL Script
 First, create a PyMOL script (e.g., render_script.pml) with all the commands needed to load your structure, apply the desired visual settings, and perform the rendering. Here’s an example script on my file:
+
 #Create the .pml script file
 touch render_script.pml
+
 #Edit the .pml file with the following script
 # General Settings
 bg_color white
