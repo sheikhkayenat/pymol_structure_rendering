@@ -8,7 +8,7 @@ touch render_script.pml
 vi render_script.pml
 
 1. Edit.pml file with the following script
-#1.1 General Settings
+# 1.1 General Settings
 bg_color white
 set ray_trace_mode, 1
 set antialias, 2
@@ -19,51 +19,51 @@ set shininess, 10
 set spec_reflect, 1
 set spec_power, 200
 set light_count, 8
-#1.2 Image Resolution
+# 1.2 Image Resolution
 ray 3000, 3000
-# Protein Representation
+# 1.3 Protein Representation
 hide everything
 show cartoon, all
 show sticks, organic
 set cartoon_fancy_helices, 1
 set cartoon_highlight_color, grey70
 set cartoon_side_chain_helper, on
-#1.3 Surface Representation
+# 1.4 Surface Representation
 show surface, all
 set transparency, 0.2, all
-#1.4 Colors by Secondary Structure and Chain
+# 1.5 Colors by Secondary Structure and Chain
 color marine, ss h
 color yellow, ss s
 color salmon, ss l
 color cyan, chain A
 color magenta, chain B
-#1.5 Highlight Ligands
+# 1.6 Highlight Ligands
 show sticks, organic
 color green, organic
-#1.6 Highlight Important Residues
+# 1.7 Highlight Important Residues
 select important_residues, resi 123+456
 show spheres, important_residues
 color red, important_residues
-#1.7 Labeling Important Residues
+# 1.8 Labeling Important Residues
 label resi 123 and name CA, "Important Residue"
 set label_font_id, 7
 set label_size, 14
 color black, labels
-#1.8 Lighting and Shadows
+# 1.9 Lighting and Shadows
 set spec_reflect, 1
 set spec_power, 200
 set shininess, 10
 set light_count, 8
-#1.9 Depth Cueing
+# 1.10 Depth Cueing
 set depth_cue, 1
 set fog_start, 0.4
-# 1.10 Rendering
+# 1.11 Rendering
 ray
 png output_image.png
 
 2. Create a Batch Submission Script
 Next, create a batch submission script for your HPC scheduler (e.g., SLURM, PBS, or LSF). Here’s an example for SLURM:
-#2.1
+# 2.1
 #!/bin/bash
 #SBATCH --job-name=pymol_render
 
@@ -83,10 +83,10 @@ Next, create a batch submission script for your HPC scheduler (e.g., SLURM, PBS,
 
 #SBATCH --mem=32G
 
-#2.2 Load PyMOL module if available
+# 2.2 Load PyMOL module if available
 module load pymol
 
-#2.3 Run PyMOL in headless mode
+# 2.3 Run PyMOL in headless mode
 pymol -cq render_script.pml
 
 3. Submit the Job to the HPC Cluster
