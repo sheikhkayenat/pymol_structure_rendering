@@ -66,13 +66,21 @@ Next, create a batch submission script for your HPC scheduler (e.g., SLURM, PBS,
 
 #!/bin/bash
 #SBATCH --job-name=pymol_render
+
 #SBATCH --output=pymol_render.out
+
 #SBATCH --error=pymol_render.err
+
 #SBATCH --time=01:00:00
+
 #SBATCH --partition=standard
+
 #SBATCH --nodes=1
+
 #SBATCH --ntasks=1
+
 #SBATCH --cpus-per-task=16
+
 #SBATCH --mem=32G
 
 # Load PyMOL module if available
