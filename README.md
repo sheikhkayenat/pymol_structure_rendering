@@ -12,7 +12,6 @@ bg_color white
 set ray_trace_mode, 1
 set antialias, 2
 set ray_shadows, 1
-
 set ambient, 0.3
 
 set reflect, 1
