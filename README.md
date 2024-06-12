@@ -3,19 +3,14 @@ Transfer the pymol session file on the HPC directory through this code on local 
 scp -r /path/to/pymol/session/file/ username@hpcloginid:/path/to/hpc/directory/
 
 #Login to HPC terminal and do this and prepare the PyMOL Script #Create the .pml script file
-
 touch render_script.pml
-
 vi render_script.pml
 
 #Edit.pml file with the following script
 # 1.1 general settings
 bg_color white
-
 set ray_trace_mode, 1
-
 set antialias, 2
-
 set ray_shadows, 1
 
 set ambient, 0.3
