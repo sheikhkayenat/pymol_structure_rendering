@@ -13,16 +13,12 @@ set ray_trace_mode, 1
 set antialias, 2
 set ray_shadows, 1
 set ambient, 0.3
-
 set reflect, 1
-
 set shininess, 10
-
 set spec_reflect, 1
-
 set spec_power, 200
-
 set light_count, 8
+
 # 1.2 Image Resolution
 ray 3000, 3000
 # 1.3 Protein Representation
