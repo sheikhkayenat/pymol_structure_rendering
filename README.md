@@ -23,85 +23,65 @@ set light_count, 8
 ray 3000, 3000
 # 1.3 Protein Representation
 hide everything
-
 show cartoon, all
-
 show sticks, organic
-
 set cartoon_fancy_helices, 1
-
 set cartoon_highlight_color, grey70
-
 set cartoon_side_chain_helper, on
+
 # 1.4 Surface Representation
 show surface, all
-
 set transparency, 0.2, all
+
 # 1.5 Colors by Secondary Structure and Chain
 color marine, ss h
-
 color yellow, ss s
-
 color salmon, ss l
-
 color cyan, chain A
-
 color magenta, chain B
+
 # 1.6 Highlight Ligands
 show sticks, organic
-
 color green, organic
+
 # 1.7 Highlight Important Residues
 select important_residues, resi 123+456
-
 show spheres, important_residues
-
 color red, important_residues
+
 # 1.8 Labeling Important Residues
 label resi 123 and name CA, "Important Residue"
-
 set label_font_id, 7
-
 set label_size, 14
-
 color black, labels
+
 # 1.9 Lighting and Shadows
 set spec_reflect, 1
-
 set spec_power, 200
-
 set shininess, 10
-
 set light_count, 8
+
 # 1.10 Depth Cueing
 set depth_cue, 1
-
 set fog_start, 0.4
+
 # 1.11 Rendering
 ray
-
 png output_image.png
 
 # 2. Create a Batch Submission Script
 Next, create a batch submission script for your HPC scheduler (e.g., SLURM, PBS, or LSF). Here’s an example for SLURM:
+
 # 2.1 
 #!/bin/bash
 #SBATCH --job-name=pymol_render
-
 #SBATCH --output=pymol_render.out
-
 #SBATCH --error=pymol_render.err
-
 #SBATCH --time=01:00:00
-
 #SBATCH --partition=standard
-
 #SBATCH --nodes=1
-
 #SBATCH --ntasks=1
-
 #SBATCH --cpus-per-task=16
-
 #SBATCH --mem=32G
 
 # 2.2 Load PyMOL module if available
