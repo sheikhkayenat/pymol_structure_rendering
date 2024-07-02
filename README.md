@@ -7,7 +7,7 @@ touch render_script.pml
 vi render_script.pml
 
 #Edit.pml file with the following script
-# 1.1 general settings
+# 1.1 general settings for setting background
 bg_color white
 set ray_trace_mode, 1
 set antialias, 2
